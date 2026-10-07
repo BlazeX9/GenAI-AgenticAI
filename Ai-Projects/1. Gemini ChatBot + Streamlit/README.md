@@ -72,15 +72,3 @@ GOOGLE_API_KEY=paste_api_key_here
 ```bash
 streamlit run main.py
 ```
-
-Browser will open automatically at **http://localhost:8000**. If it doesn't, open that link yourself.
-
-To stop the app, press `Ctrl + C` in the terminal.
-
----
-
----
-
-## Author
-
-Developed by **Abhik Chatterjee** (2026).
