@@ -13,6 +13,10 @@ project/
 └── README.md           # This file
 ```
 
+## Check online
+
+Streamlit cloud link: [ChatBot](https://genai-agenticai-emzbjxwwhahtavpb5xaya8.streamlit.app)
+
 ## To Run on Local Machine
 
 ### 1. Prerequisites
