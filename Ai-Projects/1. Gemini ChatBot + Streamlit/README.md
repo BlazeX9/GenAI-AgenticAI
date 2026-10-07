@@ -60,21 +60,20 @@ pip install -r requirements.txt
 
 ### 5. Add your API key
 
-Create a file named `.env` in the same folder as `app.py` and add:
+Create a file named `.env` in the same folder:
 
 ```
-GOOGLE_API_KEY=your_api_key_here
+GOOGLE_API_KEY=paste_api_key_here
 ```
 
-> Do not put quotes around the key and do not share this file with anyone.
 
 ### 6. Start the app
 
 ```bash
-streamlit run app.py
+streamlit run main.py
 ```
 
-Your browser will open automatically at **http://localhost:8501**. If it doesn't, open that link yourself.
+Browser will open automatically at **http://localhost:8000**. If it doesn't, open that link yourself.
 
 To stop the app, press `Ctrl + C` in the terminal.
 
