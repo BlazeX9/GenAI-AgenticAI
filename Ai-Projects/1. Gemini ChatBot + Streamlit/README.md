@@ -27,11 +27,11 @@ project/
 
 ### 2. Get the project
 
-Put `app.py` in a new folder, or clone the repository if you have one:
+Put `main.py` in a new folder, or clone the repository if you have one:
 
 ```bash
-git clone <your-repo-url>
-cd <your-project-folder>
+git clone <repo-url>
+cd <project-folder>
 ```
 
 ### 3. Create a virtual environment (recommended)
