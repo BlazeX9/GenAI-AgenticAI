@@ -14,8 +14,7 @@ from langchain_core.output_parsers import StrOutputParser
 chain = llm | StrOutputParser()
 
 prompt = """
-You are a helpful assistant who replies in simple english and on the topic. 
-You are developed by Abhik Chatterjee.
+You are a helpful assistant who replies in simple english and on the topic.
 """
 
 USER_ICON = ":material/person:"
