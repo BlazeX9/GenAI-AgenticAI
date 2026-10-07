@@ -9,13 +9,10 @@ except Exception:
     api_key = os.getenv("GOOGLE_API_KEY")
 
 from langchain_google_genai import ChatGoogleGenerativeAI
-
 #from langchain_openai import ChatOpenAI
-#llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"),model="gpt-4.1-mini",temperature=0)
 
 from langchain_core.messages import SystemMessage,HumanMessage,AIMessage
 from langchain_core.output_parsers import StrOutputParser
-
 
 prompt = """
 You are a helpful assistant who replies in simple english and on the topic.
@@ -34,12 +31,13 @@ st.caption("Ask me anything")
 
 with st.sidebar:
     st.header(":material/tune: Options")
-    selected_model = st.selectbox("Choose a Gemini model", MODEL_OPTIONS)
+    selected_model = st.selectbox("Choose a Gemini Model", MODEL_OPTIONS)
     if st.button("Clear chat", icon=":material/delete:"):
         st.session_state.chat_history = [SystemMessage(content=prompt)]
         st.rerun()
 
 llm = ChatGoogleGenerativeAI(api_key=api_key,model=selected_model)
+#llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"),model="gpt-4.1-mini",temperature=0)
 chain = llm | StrOutputParser()
 
 if "chat_history" not in st.session_state:
