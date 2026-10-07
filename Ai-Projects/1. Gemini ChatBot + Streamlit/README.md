@@ -2,9 +2,6 @@
 
 A simple, beginner-friendly chatbot built with **Streamlit** and **LangChain**, powered by **Google Gemini**.
 
----
-
-
 ## Project Structure
 
 ```
