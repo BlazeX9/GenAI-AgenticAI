@@ -19,14 +19,14 @@ project/
 
 - Python 3.10 or newer. Check with:
 
-  ```bash
-  python --version
-  ```
+```bash
+python --version
+```
 - A Google Gemini API key. You can get one for free from [Google AI Studio](https://aistudio.google.com/app/apikey).
 
 ### 2. Get the project
 
-Put `main.py` in a new folder, or clone the repository:
+Put `main.py` in a new folder or clone the repository:
 
 ```bash
 git clone <repo-url>
@@ -42,16 +42,25 @@ venv\Scripts\activate
 
 ### 4. Install the packages
 
+Create a file named `requirements.txt` with this content
+
+```bash
+streamlit
+python-dotenv
+langchain-core
+langchain-google-genai
+```
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 5. Add API key
 
-Create a file named `.env` in the same folder:
+Create a file named `.env` in the same folder and put your api key:
 
 ```
-GOOGLE_API_KEY=your_api_key_here
+GOOGLE_API_KEY = your_api_key
 ```
 
 ### 6. Start the app
