@@ -17,8 +17,8 @@ project/
 
 ### 1. Prerequisites
 
-- Python 3.10 or newer installed. Check with:
-- 
+- Python 3.10 or newer. Check with:
+
   ```bash
   python --version
   ```
