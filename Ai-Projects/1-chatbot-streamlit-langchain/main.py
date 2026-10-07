@@ -9,14 +9,13 @@ except Exception:
     api_key = os.getenv("GOOGLE_API_KEY")
 
 from langchain_google_genai import ChatGoogleGenerativeAI
-llm = ChatGoogleGenerativeAI(api_key=api_key,model="gemini-3.5-flash-lite")
 
 #from langchain_openai import ChatOpenAI
 #llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"),model="gpt-4.1-mini",temperature=0)
 
 from langchain_core.messages import SystemMessage,HumanMessage,AIMessage
 from langchain_core.output_parsers import StrOutputParser
-chain = llm | StrOutputParser()
+
 
 prompt = """
 You are a helpful assistant who replies in simple english and on the topic.
@@ -24,6 +23,10 @@ You are a helpful assistant who replies in simple english and on the topic.
 
 USER_ICON = ":material/person:"
 AI_ICON = ":material/smart_toy:"
+MODEL_OPTIONS = [
+    "gemini-3.1-flash-lite",
+    "gemini-3.5-flash-lite",
+]
 
 st.set_page_config(page_title="AI Chat Assistant", page_icon=":material/forum:")
 st.title(":material/auto_awesome: AI Chat Assistant")
@@ -31,9 +34,13 @@ st.caption("Ask me anything")
 
 with st.sidebar:
     st.header(":material/tune: Options")
+    selected_model = st.selectbox("Choose a Gemini model", MODEL_OPTIONS)
     if st.button("Clear chat", icon=":material/delete:"):
         st.session_state.chat_history = [SystemMessage(content=prompt)]
         st.rerun()
+
+llm = ChatGoogleGenerativeAI(api_key=api_key,model=selected_model)
+chain = llm | StrOutputParser()
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [SystemMessage(content=prompt)]
