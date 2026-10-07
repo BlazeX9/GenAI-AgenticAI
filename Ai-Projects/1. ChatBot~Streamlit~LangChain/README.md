@@ -13,8 +13,6 @@ project/
 └── README.md           # This file
 ```
 
----
-
 ## To Run on Local Machine
 
 ### 1. Prerequisites
