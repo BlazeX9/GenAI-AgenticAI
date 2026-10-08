@@ -1,6 +1,6 @@
 # AI Chat Assistant
 
-A simple, beginner-friendly chatbot built with **Streamlit** and **LangChain**, powered by **Google Gemini**.
+A simple chatbot built with **Streamlit** and **LangChain**, powered by **Google Gemini**
 
 
 ## Project Structure
