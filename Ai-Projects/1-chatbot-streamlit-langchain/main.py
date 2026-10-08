@@ -1,15 +1,10 @@
-from dotenv import load_dotenv
-import os
 import streamlit as st
+from dotenv import load_dotenv
 load_dotenv()
-
-try:
-    api_key = st.secrets["GOOGLE_API_KEY"]
-except Exception:
-    api_key = os.getenv("GOOGLE_API_KEY")
+import os
 
 from langchain_google_genai import ChatGoogleGenerativeAI
-#from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI
 
 from langchain_core.messages import SystemMessage,HumanMessage,AIMessage
 from langchain_core.output_parsers import StrOutputParser
@@ -23,6 +18,7 @@ AI_ICON = ":material/smart_toy:"
 MODEL_OPTIONS = [
     "gemini-3.1-flash-lite",
     "gemini-3.5-flash-lite",
+    "gpt-4.1-mini"
 ]
 
 st.set_page_config(page_title="AI Chat Assistant", page_icon=":material/forum:")
@@ -31,14 +27,27 @@ st.caption("Ask me anything")
 
 with st.sidebar:
     st.header(":material/tune: Options")
-    selected_model = st.selectbox("Choose a Gemini Model", MODEL_OPTIONS)
+    selected_model = st.selectbox("Choose a Model", MODEL_OPTIONS)
     if st.button("Clear chat", icon=":material/delete:"):
         st.session_state.chat_history = [SystemMessage(content=prompt)]
         st.rerun()
 
-llm = ChatGoogleGenerativeAI(api_key=api_key,model=selected_model)
-#llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"),model="gpt-4.1-mini",temperature=0)
-chain = llm | StrOutputParser()
+if selected_model == "gpt-4.1-mini":
+    try:
+        api_key = st.secrets["OPENAI_API_KEY"]
+    except Exception:
+        api_key = os.getenv("OPENAI_API_KEY")
+
+    connect_llm = ChatOpenAI(api_key=api_key,model=selected_model)
+else:
+    try:
+        api_key = st.secrets["GOOGLE_API_KEY"]
+    except Exception:
+        api_key = os.getenv("GOOGLE_API_KEY")
+
+    connect_llm = ChatGoogleGenerativeAI(api_key=api_key,model=selected_model)   
+
+chain = connect_llm | StrOutputParser()
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = [SystemMessage(content=prompt)]
