@@ -17,8 +17,7 @@ USER_ICON = ":material/person:"
 AI_ICON = ":material/smart_toy:"
 MODEL_OPTIONS = [
     "gemini-3.1-flash-lite",
-    "gemini-3.5-flash-lite",
-    "gpt-4.1-mini"
+    "gemini-3.5-flash-lite"
 ]
 
 st.set_page_config(page_title="AI Chat Assistant", page_icon=":material/forum:")
